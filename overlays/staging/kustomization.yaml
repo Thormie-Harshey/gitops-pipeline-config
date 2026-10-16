@@ -8,7 +8,7 @@ namespace: staging
 
 images:
 - name: ghcr.io/thormie-harshey/gitops-pipeline-app
-  newTag: 5f95d9d6a1705aba2fb33b9e1f0ac0c6f6fcfacb
+  newTag: 1f83ba84fae034feda6e494c48aab7177db82237
 
 patches:
 - path: resources-patch.yaml
