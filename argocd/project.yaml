@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: gitops-pipeline
+  namespace: argocd
+spec:
+  description: Staging and production for gitops-pipeline-app
+
+  sourceRepos:
+    - https://github.com/Thormie-Harshey/gitops-pipeline-config.git
+
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: staging
+    - server: https://kubernetes.default.svc
+      namespace: production
+
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+
+  namespaceResourceWhitelist:
+    - group: apps
+      kind: Deployment
+    - group: ""
+      kind: Service
+
+  roles:
+    - name: developer
+      description: View both apps, sync staging only
+      policies:
+        - p, proj:gitops-pipeline:developer, applications, get, gitops-pipeline/*, allow
+        - p, proj:gitops-pipeline:developer, applications, sync, gitops-pipeline/gitops-pipeline-staging, allow
+    - name: release-manager
+      description: View and sync both apps, including production
+      policies:
+        - p, proj:gitops-pipeline:release-manager, applications, get, gitops-pipeline/*, allow
+        - p, proj:gitops-pipeline:release-manager, applications, sync, gitops-pipeline/*, allow
