@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+namespace: production
+
+images:
+  - name: ghcr.io/thormie-harshey/gitops-pipeline-app
+    newTag: e7fe1dc65837039bb6335442be0347d70bfd890a
+
+patches:
+  - path: resources-patch.yaml
