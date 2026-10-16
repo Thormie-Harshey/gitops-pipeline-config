@@ -8,7 +8,7 @@ namespace: production
 
 images:
   - name: ghcr.io/thormie-harshey/gitops-pipeline-app
-    newTag: e7fe1dc65837039bb6335442be0347d70bfd890a
+    newTag: 5f95d9d6a1705aba2fb33b9e1f0ac0c6f6fcfacb
 
 patches:
   - path: resources-patch.yaml
