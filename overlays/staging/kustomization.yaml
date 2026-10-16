@@ -2,13 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ../../base
+- ../../base
 
 namespace: staging
 
 images:
-  - name: ghcr.io/thormie-harshey/gitops-pipeline-app
-    newTag: e7fe1dc65837039bb6335442be0347d70bfd890a
+- name: ghcr.io/thormie-harshey/gitops-pipeline-app
+  newTag: 77785aeef15e31d00f31a0860acad824494baec3
 
 patches:
-  - path: resources-patch.yaml
+- path: resources-patch.yaml
